@@ -9,5 +9,18 @@
     "clean": "rm -rf public",
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
+    "client": "^0.0.1",
+    "font-awesome": "^4.7.0",
+    "font-awesome-icons": "^1.6.0",
+    "moment": "^2.29.1",
+    "react-big-calendar": "^0.38.0",
+    "use-history": "^1.4.1"
   }
 }

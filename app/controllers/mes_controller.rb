@@ -1,0 +1,2 @@
+class MesController < ApplicationController
+end
