@@ -96,9 +96,13 @@ function Dark() {
             
             console.log(eachIcon)
             return (
+                        
                         <div>
+                        {hobby.length >= 1 &&
                         <IconNew iconToProcess={eachIcon}/>
+                        }
                         </div>
+                        
             )
         })
         // console.log(mappedTasks[0])
@@ -140,7 +144,10 @@ function Dark() {
             let mappedWork = workHistories.map(eachWork =>{
                 // console.log(eachWork)
                 return (
+                        <>
+                        {workHistories.length >= 1 &&
                         <div className="li_wrap">
+                        
                             <div className="date">{eachWork.start_date} - {eachWork.end_date}</div>
                             <div className="info_dark">
                                 <p className="info_title">{eachWork.title}</p>
@@ -152,10 +159,12 @@ function Dark() {
                                         )
                                     }) 
                                 }
-                                {/* <p className="info_cont">{eachWork.tasks[0].details}</p>
-                                <p className="info_cont">{eachWork.tasks[1].details}</p> */}
+                                
                             </div>
+                        
                         </div>
+                        }
+                        </>
                 )
             })
             // console.log(mappedWork)
@@ -168,13 +177,18 @@ function Dark() {
             let mappedEducations = educations.map(eachEducation =>{
                 // console.log(eachEducation)
                 return (
+                    <>
+                    {educations.length >= 1 &&
                     <div className="li_wrap">
+                    
                     <div className="date">{eachEducation.start_date} - {eachEducation.end_date}</div>
                     <div className="info_dark">
                         <p className="info_title">{eachEducation.degree}</p>
                         <p className="info_com">{eachEducation.school}</p>
                     </div>
                     </div>
+                    }
+                    </>
                 )
             })
             // console.log(mappedEducations)
@@ -192,6 +206,8 @@ function Dark() {
                             // <li>
                             //     <p>{eachSkill.epertise}</p>
                             // </li>
+                            <>
+                            {mappedSkills >= 1 &&
                             <li>
                                 <div class="skill_name">
                                     <p>{eachSkill.expertise}</p>
@@ -200,7 +216,10 @@ function Dark() {
                                     <span style={{width: `${eachSkill.rating}%`}}></span>
                                 </div>
                                 <div class="skill_per">{`${eachSkill.rating}%`}</div>
+                            }
                             </li>
+            }
+                            </>
                             )
             })
                     console.log(mappedSkills)

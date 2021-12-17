@@ -83,9 +83,13 @@ function Resume() {
             // console.log(hob)
             // return (<Icon iconToRender={eachIcon} />)
             return (
+                <>
+                {hobby.length >= 1 &&
                     <p>
                         <IconNew className="icon" iconToProcess={eachIcon}/>
                     </p>
+                    }
+                </>
             )           
         })
         // console.log(mappedTasks[0])
@@ -110,21 +114,24 @@ function Resume() {
     //     }
     // }
 
-        const mapTasks = () => {
-            let mappedTasks = workHistories.tasks.details.map(eachTask =>{
-                // console.log(eachTask.details)
-                return (eachTask)
-            })
-            // console.log(mappedTasks[0])
-            return mappedTasks
+        // const mapTasks = () => {
+        //     let mappedTasks = workHistories.tasks.details.map(eachTask =>{
+        //         // console.log(eachTask.details)
+        //         return (eachTask)
+        //     })
+        //     // console.log(mappedTasks[0])
+        //     return mappedTasks
             
-        }
+        // }
 
 
         const mapSkills = () => {
             let mappedSkills = skills.map(eachSkill =>{
                 // console.log(eachSkill)
-                    return (<li>
+                    return (
+                        <>
+                        {skills.length >= 1 &&
+                            <li>
                                 <div class="skill_name">
                                     <p>{eachSkill.expertise}</p>
                                 </div>
@@ -132,7 +139,10 @@ function Resume() {
                                     <span style={{width: `${eachSkill.rating}%`}}></span>
                                 </div>
                                 <div class="skill_per">{`${eachSkill.rating}%`}</div>
-                            </li>)
+                            </li>
+                            }
+                        </>
+                            )
             })
                     // console.log(mappedSkills)
                     return mappedSkills
@@ -143,6 +153,8 @@ function Resume() {
         let mappedWork = workHistories.map(eachWork =>{
             console.log(eachWork)
             return (
+                <>
+                {workHistories.length >= 1 &&
                     <div className="li_wrap_light">
                         <div className="date">{eachWork.start_date} - {eachWork.end_date}</div>
                         <div className="info_dark">
@@ -159,6 +171,8 @@ function Resume() {
                             <p className="info_cont">{eachWork.tasks[1].details}</p> */}
                         </div>
                     </div>
+                    }
+                </>
             )
         })
         // console.log(mappedWork)
@@ -170,6 +184,7 @@ function Resume() {
         let mappedEducations = educations.map(eachEducation =>{
             // console.log(eachEducation)
             return (
+            <>{educations.length >= 1 &&
                 <div className="li_wrap_light">
                 <div className="date">{eachEducation.start_date} - {eachEducation.end_date}</div>
                 <div className="info_dark">
@@ -177,12 +192,53 @@ function Resume() {
                     <p className="info_com">{eachEducation.school}</p>
                 </div>
                 </div>
+                }
+            </>
             )
         })
         // console.log(mappedEducations)
         return mappedEducations
         
     }
+
+    // const mapSocials = () => {
+    //         let mappedSocials = socials.map(eachSocial =>{
+    //             // console.log(eachWork)
+    //             return (
+    //                     <>
+    //                     {socials.length >= 1 &&
+    //                         <li>
+    //                             <FontAwesomeIcon className="icon" icon={faFacebookSquare} />
+    //                             <div class="data">
+    //                                 <a className="semi_bold" href ={eachSocial[0].facebook} target="_blank">facebook</a>
+    //                             </div>
+    //                         </li>
+    //                         <li>
+    //                             <FontAwesomeIcon className="icon" icon={faInstagramSquare} />
+    //                             <div class="data">
+    //                                 <a className="semi_bold" href ={eachSocial[1].instagram} target="_blank">instagram</a>
+    //                             </div>
+    //                         </li>
+    //                         <li>
+    //                             <FontAwesomeIcon className="icon" icon={faTwitterSquare} />
+    //                             <div class="data">
+    //                                 <a className="semi_bold" href ={eachSocial[2].twitter} target="_blank">twitter</a>
+    //                             </div>
+    //                         </li>
+    //                         <li>
+    //                             <FontAwesomeIcon className="icon" icon={faLinkedin} />
+    //                             <div class="data">
+    //                                 <a className="semi_bold" href ={eachSocial[3].linkedin} target="_blank">linkedin</a>
+    //                             </div>
+    //                         </li>
+    //                     }
+    //                     </>
+    //                     )
+    //         })
+    //         // console.log(mappedWork)
+    //         return mappedSocials
+            
+        // }
     
 
 
