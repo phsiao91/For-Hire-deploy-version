@@ -4,6 +4,8 @@ import {faMapMarkerAlt, faEnvelope, faPhoneSquare, faFutbol, faGamepad, faMusic,
 import { faGithub, faFacebookSquare, faInstagramSquare, faTwitterSquare, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { Link } from "react-router-dom";
 import IconNew from "./IconNew";
+import {jsPDF} from 'jspdf'
+import html2canvas from 'html2canvas'
 
 
 function Resume() {
@@ -17,6 +19,7 @@ function Resume() {
     const [tasks, setTasks] = useState([])
     const [socials, setSocials] = useState([])
     const [hobby, setHobbies] = useState([])
+
 
     const getSummary = () => {
         fetch("/myintro")
@@ -239,16 +242,53 @@ function Resume() {
     //         return mappedSocials
             
         // }
+
+    // const pdfGenerator = () => {
+    //     let doc = new jsPDF('portrait', 'px', 'a4', 'false');
+    //     const page = document.getElementById("doc")
+
+    //     doc.save('resume.pdf')
+    // }
+
+    
+
+//     function printDocument() {
+//         const page = document.getElementById("resume")
+//         html2canvas(page)
+//             .then((canvas) => {
+//         // const imgData = canvas.toDataURL('image/png');
+//             const pdf = new jsPDF();
+//         // pdf.addImage(imgData, 'JPEG', 0, 0);
+//         // pdf.output('dataurlnewwindow');
+//             pdf.save("download.pdf");
+//       })
+//     ;
+//   }
+
+    const printDocument = () => {
+    const input = document.getElementById('doc');
+    html2canvas(input)
+      .then((canvas) => {
+        let imgWidth = 208;
+        let imgHeight = canvas.height * imgWidth / canvas.width;
+        const imgData = canvas.toDataURL('img/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        // pdf.output('dataurlnewwindow');
+        pdf.save("resume.pdf");
+      })
+    ;
+  }
     
 
 
 
     return(
-    <div>
+    <div id="doc">
         <Link to="dark">
             <button className="mode">Dark Mode</button>
         </Link>
-        <div className="resume">
+        <div className="resume" id="resume">
             <div className="resume_left">
                 <div class="resume_profile">
                     <img src={bios.image} alt="profile_pic"></img>
@@ -429,6 +469,7 @@ function Resume() {
                     </div>
                 </div>
         </div>
+        <button onClick={printDocument}>save to pdf</button>
     </div>
     )
 }

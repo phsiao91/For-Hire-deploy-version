@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faMapSigns, faEnvelope, faMobileAlt, faGem } from '@fortawesome/free-solid-svg-icons'
 import { faGithub, faFacebookSquare, faInstagramSquare, faTwitterSquare, faLinkedin, faHtml5, faReact, faJsSquare, faCss3Alt} from '@fortawesome/free-brands-svg-icons'
 import IconNew from "./IconNew";
+import {jsPDF} from 'jspdf'
+import html2canvas from 'html2canvas'
 
 
 function Dark() {
@@ -228,12 +230,27 @@ function Dark() {
     }
     
 
+    const printDocument = () => {
+        const input = document.getElementById('doc');
+        html2canvas(input)
+            .then((canvas) => {
+                let imgWidth = 208;
+                let imgHeight = canvas.height * imgWidth / canvas.width;
+                const imgData = canvas.toDataURL('img/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+                // pdf.output('dataurlnewwindow');
+                pdf.save("resume.pdf");
+            })
+    
+  }
+
     return (
         <div className="wrapper">
             <Link to="resumes">
                 <button className="mode_light">Light Mode</button>
             </Link>
-            <div className="resume_dark">
+            <div className="resume_dark" id="doc">
                 <div className="left">
                     <div className="img_holder">
                         <img src={bios.image} alt="profile_pic"></img>
@@ -392,6 +409,7 @@ function Dark() {
                     </div>
                 </div>
             </div>
+            <button onClick={printDocument}>save to pdf</button>
         </div>
     )
 }

@@ -15,7 +15,7 @@ import Account from './Account';
 import Social from './Social';
 import Hobby from './Hobby';
 import Dark from './Dark';
-// import IconNew from './IconNew';
+// import { PDFViewer } from '@react-pdf/renderer';
 import Cal from './Cal';
 
 
@@ -50,7 +50,9 @@ function App() {
               <Intro/>
             </Route>
             <Route path="/resumes">
+              {/* <PDFViewer> */}
               <Resume/>
+              {/* </PDFViewer> */}
             </Route> 
             <Route path="/educations">
               <Education/>
